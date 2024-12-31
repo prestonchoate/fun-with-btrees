@@ -8,24 +8,24 @@ import (
 
 func main() {
   btree := data.Btree{
-    Root: &data.Leaf{
+    Root: &data.Node{
       Value: 1,
-      Left: &data.Leaf{
+      Left: &data.Node{
         Value: 2,
-        Left: &data.Leaf{
+        Left: &data.Node{
           Value: 4,
           Left: nil,
           Right: nil,
         },
       },
-      Right: &data.Leaf{
+      Right: &data.Node{
         Value: 3,
-        Left: &data.Leaf{
+        Left: &data.Node{
           Value: 5,
           Left: nil,
           Right: nil,
         },
-        Right: &data.Leaf{
+        Right: &data.Node{
           Value: 6,
           Left: nil,
           Right: nil,
@@ -34,8 +34,8 @@ func main() {
     },
   }
 
-  curQueue := data.NewQueue[data.Leaf]()
-  nextQueue := data.NewQueue[data.Leaf]()
+  curQueue := data.NewQueue[data.Node]()
+  nextQueue := data.NewQueue[data.Node]()
   curQueue.Enqueue(*btree.Root)
 
   for true {
